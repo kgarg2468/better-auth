@@ -1,5 +1,32 @@
 # better-auth
 
+## 1.6.12
+
+### Patch Changes
+
+- [#9596](https://github.com/better-auth/better-auth/pull/9596) [`7a12072`](https://github.com/better-auth/better-auth/commit/7a120724c5c3fdd9d60d59169b32d693e9497fec) Thanks [@bytaesu](https://github.com/bytaesu)! - Email OTP sign-in no longer fails with a missing-captcha-token error under the default captcha settings. If you intentionally want captcha on email OTP sign-in, add `/sign-in/email-otp` to `captcha({ endpoints })`.
+
+- [#9642](https://github.com/better-auth/better-auth/pull/9642) [`f5fcc9d`](https://github.com/better-auth/better-auth/commit/f5fcc9d37f2c46d3719a70c18857d9913ce172cf) Thanks [@ping-maxwell](https://github.com/ping-maxwell)! - fix(admin): export AdminClientOptions and OrganizationClientOptions
+
+- [#9543](https://github.com/better-auth/better-auth/pull/9543) [`1b40dac`](https://github.com/better-auth/better-auth/commit/1b40dac22e0cfddbbb27136fe8067aba154ca91a) Thanks [@bytaesu](https://github.com/bytaesu)! - `Cookie` headers without a space after `;` separators are now tolerated. Signed-in users behind proxies that strip this space were previously treated as logged-out.
+
+- [#9619](https://github.com/better-auth/better-auth/pull/9619) [`ad9ad82`](https://github.com/better-auth/better-auth/commit/ad9ad824965cb8385f6f2a921576f2cc58ac2b47) Thanks [@ping-maxwell](https://github.com/ping-maxwell)! - fix(email-verification): clone request before passing to sendVerificationEmail callback
+
+- [#9661](https://github.com/better-auth/better-auth/pull/9661) [`62dabf6`](https://github.com/better-auth/better-auth/commit/62dabf66780a3dc7270e419886a15c43f3c8d879) Thanks [@gustavovalverde](https://github.com/gustavovalverde)! - Harden URL normalization and Stripe customer search escaping. URL helpers now trim trailing slashes without a regular expression, and Stripe search query values escape backslashes before quotes.
+
+- [#9639](https://github.com/better-auth/better-auth/pull/9639) [`c01b2f1`](https://github.com/better-auth/better-auth/commit/c01b2f13216463fc0fc0054b5acdb9559d29d825) Thanks [@Paola3stefania](https://github.com/Paola3stefania)! - Fix session cookie leak on 2FA-required sign-in. The credential handler wrote valid `session_token` / `session_data` cookies that the 2FA after-hook only appended expiring overrides to; raw-response readers could capture the valid values and replay them to bypass 2FA when `session.cookieCache.enabled`. `expireCookie` now scrubs prior matching `Set-Cookie` entries (including chunks) before re-setting. `/two-factor/disable` switched to `sensitiveSessionMiddleware` as defense in depth.
+
+- [#9464](https://github.com/better-auth/better-auth/pull/9464) [`6b44606`](https://github.com/better-auth/better-auth/commit/6b44606b7d596527b59176b7a0cd06ea66df9031) Thanks [@ping-maxwell](https://github.com/ping-maxwell)! - fix(username): validate username on admin `createUser` endpoint
+
+- Updated dependencies [[`160d132`](https://github.com/better-auth/better-auth/commit/160d132752b2e540cea8f9c2d2c57307b96867a4)]:
+  - @better-auth/kysely-adapter@1.6.12
+  - @better-auth/core@1.6.12
+  - @better-auth/drizzle-adapter@1.6.12
+  - @better-auth/memory-adapter@1.6.12
+  - @better-auth/mongo-adapter@1.6.12
+  - @better-auth/prisma-adapter@1.6.12
+  - @better-auth/telemetry@1.6.12
+
 ## 1.6.11
 
 ### Patch Changes

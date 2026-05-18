@@ -1,5 +1,14 @@
 # @better-auth/kysely-adapter
 
+## 1.6.12
+
+### Patch Changes
+
+- [#9615](https://github.com/better-auth/better-auth/pull/9615) [`160d132`](https://github.com/better-auth/better-auth/commit/160d132752b2e540cea8f9c2d2c57307b96867a4) Thanks [@bytaesu](https://github.com/bytaesu)! - Fix the bundled SQLite introspectors (`BunSqliteDialect`, `NodeSqliteDialect`) so that tables are no longer reported as views. The introspector queries only rows where `type = 'table'`, but each `TableMetadata` was returned with `isView: true`. Consumers that branch on `isView` (CLI codegen, schema diffing) now see the correct value.
+
+- Updated dependencies []:
+  - @better-auth/core@1.6.12
+
 ## 1.6.11
 
 ### Patch Changes
